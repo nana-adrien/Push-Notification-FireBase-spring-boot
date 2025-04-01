@@ -12,13 +12,14 @@ import org.springframework.stereotype.Service;
 import javax.annotation.PostConstruct;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 
 @Service
 public class FCMInitializer {
 
-    @Value("${app.firebase-configuration-file}")
-    private  String firebaseConfigPath;
+    @Value("${app.firebase-configuration-file}") // Injection du chemin du fichier
+    private String firebaseConfigPath;
 
     Logger logger= LoggerFactory.getLogger(FCMInitializer.class);
 
@@ -28,8 +29,12 @@ public class FCMInitializer {
     @PostConstruct
     public void initialize() {
         try{
-          FirebaseOptions option = new FirebaseOptions.Builder()
-                  .setCredentials(GoogleCredentials.fromStream(new ClassPathResource(firebaseConfigPath).getInputStream())).build();
+            System.out.println("📂 Chemin du fichier Firebase : " + firebaseConfigPath);
+
+            InputStream inputStream = FCMInitializer.class.getClassLoader().getResourceAsStream("java-firebase-sdk-firebase-adminsdk.json");
+
+            FirebaseOptions option = new FirebaseOptions.Builder()
+                  .setCredentials(GoogleCredentials.fromStream(inputStream/*new ClassPathResource(firebaseConfigPath).getInputStream())*/)).build();
           if (FirebaseApp.getApps().isEmpty()){
               FirebaseApp.initializeApp(option);
               logger.info("Firebase App initialized");

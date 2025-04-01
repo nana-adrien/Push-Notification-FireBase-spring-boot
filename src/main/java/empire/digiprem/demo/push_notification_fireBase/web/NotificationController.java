@@ -1,8 +1,10 @@
 package empire.digiprem.demo.push_notification_fireBase.web;
 
+import com.google.firebase.messaging.FirebaseMessagingException;
 import empire.digiprem.demo.push_notification_fireBase.model.NotificationRequest;
 import empire.digiprem.demo.push_notification_fireBase.model.NotificationResponse;
 import empire.digiprem.demo.push_notification_fireBase.services.FCMService;
+import empire.digiprem.demo.push_notification_fireBase.services.FCMService2;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,17 +19,25 @@ import java.util.concurrent.ExecutionException;
 public class NotificationController {
 
     private FCMService fcmService;
+    private FCMService2 fcmService2;
 
-    public NotificationController(FCMService fcmService) {
+    public NotificationController(FCMService fcmService,FCMService2 fcmService2) {
         this.fcmService = fcmService;
+        this.fcmService2 = fcmService2;
     }
 
     /*
     * Nous avons exposé un point de terminaison /notification qui acceptera un objet NotificationRequest et appellera la méthode sendMessageToToken() de notre classe de service pour envoyer la notification push.
      * */
     @PostMapping("/notification")
-    public ResponseEntity sendNotification(@RequestBody NotificationRequest request) throws ExecutionException, InterruptedException {
+    public ResponseEntity<NotificationResponse> sendNotification(@RequestBody NotificationRequest request) throws ExecutionException, InterruptedException {
         fcmService.sendMessageToken(request);
         return new ResponseEntity<>(new NotificationResponse(HttpStatus.OK.value(), "Notification has been sent."), HttpStatus.OK);
+    }
+
+    @PostMapping("/notification2")
+    public ResponseEntity<NotificationResponse> sendNotification2(@RequestBody NotificationRequest request) throws ExecutionException, InterruptedException, FirebaseMessagingException {
+        fcmService2.sendNotification(request.getToken(),request.getTitre(),request.getBody());
+        return new ResponseEntity<NotificationResponse>(new NotificationResponse(HttpStatus.OK.value(), "Notification has been sent."), HttpStatus.OK);
     }
 }

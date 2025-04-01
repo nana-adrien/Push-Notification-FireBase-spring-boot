@@ -16,7 +16,9 @@ import java.util.concurrent.ExecutionException;
 public class FCMService {
     private Logger logger = LoggerFactory.getLogger(this.getClass().getName());
 
-    /*
+
+
+        /*
     * La méthode sendMessageToToken() est notre principale méthode d'envoi de notification. Elle utilise les méthodes d'assistance getPreconfiguredMessageToToken() pour créer l'objet Message et sendAndGetResponse() pour envoyer le message au service FCM pour distribution.
      * */
     public  void sendMessageToken(NotificationRequest request)throws InterruptedException, ExecutionException {
@@ -48,7 +50,7 @@ public class FCMService {
         ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
         Notification notification=Notification.builder().setTitle(request.getTitre()).setBody(request.getBody()).build();
 
-        return Message.builder().setApnsConfig(apnsConfig).setAndroidConfig(androidConfig).setNotification(notification);
+        return Message.builder().setToken(request.getToken()).setApnsConfig(apnsConfig).setAndroidConfig(androidConfig).setNotification(notification);
 
     }
 
