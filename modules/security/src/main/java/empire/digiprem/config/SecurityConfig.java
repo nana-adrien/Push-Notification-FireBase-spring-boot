@@ -50,14 +50,12 @@ public class SecurityConfig {
                          * */.anyRequest().authenticated())
                 .addFilterBefore(new JwtFilter(userDetailsService, jwtTokenUtil), UsernamePasswordAuthenticationFilter.class)
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .exceptionHandling(
-                        ex -> {
+                /*.exceptionHandling(ex -> {
                             ex.authenticationEntryPoint((request, response, authException) -> response.sendError(401, "Unauthorized"));
                             ex .accessDeniedHandler((request, response, accessDeniedException) -> response.sendError(403, "Forbidden")
                             );
-                        }
-                )
-                .build();
+                        })
+               */ .build();
     }
 
 

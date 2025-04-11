@@ -5,6 +5,7 @@ import empire.digiprem.models.AppUser;
 import empire.digiprem.models.UserRole;
 import empire.digiprem.services.UserDetailServiceImpl;
 import empire.digiprem.utils.JwtTokenUtil;
+import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -41,7 +42,7 @@ public class AuthController {
     }
 
     @PostMapping("/register")
-    public  ResponseEntity<RegisterRespDto> register(@RequestBody RegisterReqDto registerReqDto) {
+    public  ResponseEntity<RegisterRespDto> register(@RequestBody @Valid RegisterReqDto registerReqDto) {
 
        // try{
             AppUser savedAppUser = userDetailService.register(registerReqDto);
