@@ -1,0 +1,17 @@
+Module chat (Messagerie instantanée)
+🎯 Objectif :
+
+Permettre une communication interactive, en temps réel entre deux (ou plusieurs) utilisateurs.
+✅ Ce qu’il gère :
+
+    Envoi/réception de messages entre utilisateurs
+
+    Conversation (1:1 ou groupe)
+
+    Historique de messages
+
+    Statut du message : envoyé / reçu / vu
+
+    WebSocket ou polling long pour les messages temps réel
+
+    Système de messagerie avec ou sans notification

@@ -1,0 +1,53 @@
+Module auth (Authentification)
+🎯 Son rôle principal :
+
+Permettre à un utilisateur de se connecter et de prouver son identité.
+✅ Ce qu'il gère :
+
+    La connexion (/login)
+
+    La déconnexion (/logout)
+
+    La génération de tokens JWT (ou session)
+
+    Le rafraîchissement de token
+
+    La validation des identifiants/mots de passe
+
+    La vérification d'un token lors des appels API
+
+    (Optionnel) L'inscription (/register) si tu veux centraliser
+
+📦 Contenu typique :
+
+    AuthController → Gère /login, /logout
+
+    JwtTokenUtil → Génère/valide les tokens
+
+    AuthenticationService → Logique de login
+
+    AuthExceptionHandler → Gestion des erreurs liées à l'auth
+
+
+        But : Identifier un utilisateur
+
+    Ce module se concentre sur qui se connecte et comment on vérifie son identité.
+    Fonctions typiques :
+
+        Connexion (login)
+
+        Déconnexion (logout)
+
+        Gestion des tokens (JWT, refresh, etc.)
+
+        Vérification des identifiants (email + mot de passe, OTP, etc.)
+
+        Création et validation de sessions
+
+        Gestion de la double authentification (2FA)
+
+        Renouvellement de mot de passe
+
+    Exemple :
+
+    Quand un utilisateur envoie son email et son mot de passe → ce module vérifie que c’est bien lui.

@@ -1,0 +1,17 @@
+Module notification (Alertes, événements)
+🎯 Objectif :
+
+Informer un utilisateur d’un événement important, souvent non interactif, avec une intention de suivi/action.
+✅ Ce qu’il gère :
+
+    Envoi de notifications liées à des actions (ex. : "nouvelle commande", "mot de passe changé", "message reçu")
+
+    Système de file d’attente ou scheduler (email, SMS, push, etc.)
+
+    Notification push (Firebase, etc.)
+
+    Notifications dans la UI (icône cloche 🔔)
+
+    Lecture/non lu
+
+    Notification liée à un événement ou déclencheur

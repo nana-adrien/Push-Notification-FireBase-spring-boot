@@ -1,0 +1,29 @@
+ Module users
+🎯 Son rôle principal :
+
+Gérer les informations et actions liées aux utilisateurs.
+✅ Ce qu'il gère :
+
+    Création / modification / suppression de comptes
+
+    Profil utilisateur
+
+    Attribution des rôles
+
+    Réinitialisation du mot de passe
+
+    Désactivation du compte
+
+    Listing, pagination, recherche utilisateur
+
+    Affectation à des groupes, permissions, etc.
+
+📦 Contenu typique :
+
+    UserController → Gère /users, /users/{id}, etc.
+
+    UserService → Logique métier liée aux utilisateurs
+
+    UserRepository → Accès base de données
+
+    User (entité), UserDTO, UserMapper

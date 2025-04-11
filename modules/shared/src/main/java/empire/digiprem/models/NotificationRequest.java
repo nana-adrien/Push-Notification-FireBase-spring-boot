@@ -1,4 +1,4 @@
-package empire.digiprem.demo.push_notification_fireBase.model;
+package empire.digiprem.models;
 
 public class NotificationRequest {
     private String titre ;

@@ -1,9 +1,9 @@
-package empire.digiprem.demo.push_notification_fireBase.services;
+package empire.digiprem.services;
 
 import com.google.firebase.messaging.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import empire.digiprem.demo.push_notification_fireBase.model.NotificationRequest;
+import empire.digiprem.dto.NotificationRequest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -26,7 +26,7 @@ public class FCMService {
         Gson gson=new GsonBuilder().setPrettyPrinting().create();
         String jsonOutput=gson.toJson(message);
         String response=sendAndGetResponse(message);
-        logger.info("Sent message to token. Device token:"+request.getToken()+", "+response+" msg "+jsonOutput);
+        logger.info("Sent message to token. Device token:"+request.token()+", "+response+" msg "+jsonOutput);
     }
 
 
@@ -46,11 +46,11 @@ public class FCMService {
         return  ApnsConfig.builder().setAps(Aps.builder().setCategory(topic).build()).build();
     }
     private  Message.Builder getPreconfiguredMessageToToken(NotificationRequest request) {
-        AndroidConfig androidConfig = getAndroidConfig(request.getTopic());
-        ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
-        Notification notification=Notification.builder().setTitle(request.getTitre()).setBody(request.getBody()).build();
+        AndroidConfig androidConfig = getAndroidConfig(request.topic());
+        ApnsConfig apnsConfig = getApnsConfig(request.topic());
+        Notification notification=Notification.builder().setTitle(request.titre()).setBody(request.body()).build();
 
-        return Message.builder().setToken(request.getToken()).setApnsConfig(apnsConfig).setAndroidConfig(androidConfig).setNotification(notification);
+        return Message.builder().setToken(request.token()).setApnsConfig(apnsConfig).setAndroidConfig(androidConfig).setNotification(notification);
 
     }
 

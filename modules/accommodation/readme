@@ -1,0 +1,38 @@
+Fonctionnalités possibles du module bien-immobilier
+
+    Créer un bien
+    Ajouter un nouveau bien immobilier à la base (maison, appartement, bureau, etc.).
+
+    Modifier un bien
+    Mettre à jour les informations d’un bien : prix, localisation, surface, description, etc.
+
+    Supprimer un bien
+    Retirer un bien immobilier de la base de données.
+
+    Lister les biens
+    Afficher tous les biens disponibles, éventuellement avec des options de tri ou de filtre.
+
+    Rechercher un bien
+    Trouver un bien en fonction de critères comme la localisation, le type, la superficie ou le prix.
+
+    Gérer les statuts
+    Attribuer un statut au bien : disponible, réservé, loué, vendu, etc.
+
+    Associer un propriétaire
+    Lier chaque bien à un utilisateur propriétaire (souvent un client ou administrateur).
+
+    Associer des images
+    Ajouter une galerie de photos ou des images illustrant le bien.
+
+    Géolocalisation
+    Stocker la localisation précise du bien, avec latitude/longitude, pour un affichage sur carte.
+
+    Gérer les visites
+    Planifier et suivre les rendez-vous de visite des biens par les clients intéressés.
+
+    Historique des modifications
+    Suivre toutes les modifications effectuées sur les biens (audit trail).
+
+    Gérer les documents
+    Permettre le stockage et l’accès aux documents importants liés au bien : titres de propriété, diagnostics, contrats, etc.
+

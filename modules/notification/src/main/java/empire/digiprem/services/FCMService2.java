@@ -1,4 +1,4 @@
-package empire.digiprem.demo.push_notification_fireBase.services;
+package empire.digiprem.services;
 
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingException;
